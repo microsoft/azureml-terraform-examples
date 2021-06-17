@@ -1,14 +1,36 @@
-# Project
+# Azure Machine Learning Enterprise Terraform Examples
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+This repo shows several examples for rolling out complete Azure Machine Learning enterprise enviroments via Terraform.
 
-As the maintainer of this project, please make a few updates:
+![Deployed resources](media/architecture_200.png "Deployed resources")
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+Depending on the scneario you want to roll out, this includes the following resources:
+
+* Azure Machine Learning Workspace (optionally with Private Link)
+* Azure Storage Account (optionally with VNET binding (using Service Endpoints) and Private Link for Blob and File)
+* Azure Key Vault (optionally with VNET binding (using Service Endpoints) and Private Link)
+* Azure Container Registry (optionally with VNET binding and Private Link)
+* Azure Application Insights
+* Virtual Network (optional)
+* Jumphost (Windows) with Bastion for easy access to the VNET (optional)
+* Compute Cluster (in VNET)
+* Compute Instance (in VNET)
+* Azure Kubernetes Service (optional)
+
+## Instructions
+
+Make sure you have the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) and the Azure Machine Learning CLI extension installed (`az extension add -n azure-cli-ml`).
+
+1. Navigate to the scenario folder you want to deploy
+1. Copy `terraform.tfvars.example` to `terraform.tfvars`
+1. Update `terraform.tfvars` with your desired values
+1. Run Terraform
+    ```console
+    $ cd <scenario you want to deply>
+    $ terraform init
+    $ terraform plan
+    $ terraform apply
+    ```
 
 ## Contributing
 
